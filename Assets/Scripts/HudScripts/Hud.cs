@@ -15,7 +15,11 @@ public class Hud : MonoBehaviour
     }
     public static bool IsActive() 
     {
-        return PressText.activeSelf;
+        if (PressText != null)
+        {
+            return PressText.activeSelf;
+        }
+        return false;
     }
     // Start is called before the first frame update
     void Start()
