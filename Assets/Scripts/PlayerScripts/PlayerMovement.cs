@@ -89,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
                 return false;
             }
         }
+        transform.position += Vector3.zero;
         moveSound.Stop();
         return false;
     }
