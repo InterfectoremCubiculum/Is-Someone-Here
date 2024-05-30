@@ -37,12 +37,13 @@ public class OutlineSelection : MonoBehaviour
                 {
                     Hud.ShowPressText();
                     Animator anim = highlight.gameObject.GetComponent<Animator>();
-                    if (Input.GetKeyDown("e")) 
+                    if (Input.GetKeyDown("e"))
                     {
-                        Debug.Log(anim.GetBool("isOpen_Obj_1") );
+                        Debug.Log(anim.GetBool("isOpen_Obj_1"));
                         anim.SetBool("isOpen_Obj_1", !anim.GetBool("isOpen_Obj_1"));
                     }
                     highlight = null;
+                }
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
@@ -62,10 +63,6 @@ public class OutlineSelection : MonoBehaviour
                         outline.OutlineColor = Color.magenta;
                         outline.OutlineWidth = 7.0f;
                     }
-                    Outline outline = highlight.gameObject.AddComponent<Outline>();
-                    outline.enabled = true;
-                    outline.OutlineColor = Color.magenta;
-                    outline.OutlineWidth = 7.0f;
                 }
             }
             else
