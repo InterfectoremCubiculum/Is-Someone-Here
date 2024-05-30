@@ -39,14 +39,10 @@ public class OutlineSelection : MonoBehaviour
                     Animator anim = highlight.gameObject.GetComponent<Animator>();
                     if (Input.GetKeyDown("e"))
                     {
-                        Debug.Log(anim.GetBool("isOpen_Obj_1"));
+                        anim.StopPlayback();
                         anim.SetBool("isOpen_Obj_1", !anim.GetBool("isOpen_Obj_1"));
                     }
                     highlight = null;
-                }
-                if (highlight.gameObject.GetComponent<Outline>() != null)
-                {
-                    highlight.gameObject.GetComponent<Outline>().enabled = true;
                 }
                 else 
                 {
