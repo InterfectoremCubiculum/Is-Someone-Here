@@ -19,7 +19,10 @@ public class OutlineSelection : MonoBehaviour
             highlight.gameObject.GetComponent<Outline>().enabled = false;
             highlight = null;
         }
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) // Make sure you have EventSystem in the hierarchy before using EventSystem
         {
             highlight = raycastHit.transform;
