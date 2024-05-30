@@ -29,19 +29,40 @@ public class OutlineSelection : MonoBehaviour
 
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) // Make sure you have EventSystem in the hierarchy before using EventSystem
         {
+            if (Hud.IsActive()) { Hud.HidePressText(); }
             highlight = raycastHit.transform;
-            if (highlight.CompareTag("Selectable") && !selections.Contains(highlight))
+            if ((highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive")) && !selections.Contains(highlight))
             {
+                if (highlight.CompareTag("Interactive"))
+                {
+                    Hud.ShowPressText();
+                    Animator anim = highlight.gameObject.GetComponent<Animator>();
+                    if (Input.GetKeyDown("e"))
+                    {
+                        Debug.Log(anim.GetBool("isOpen_Obj_1"));
+                        anim.SetBool("isOpen_Obj_1", !anim.GetBool("isOpen_Obj_1"));
+                    }
+                    highlight = null;
+                }
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
                 }
-                else
+                else 
                 {
-                    Outline outline = highlight.gameObject.AddComponent<Outline>();
-                    outline.enabled = true;
-                    outline.OutlineColor = Color.magenta;
-                    outline.OutlineWidth = 7.0f;
+                    Outline outline = highlight.gameObject.GetComponent<Outline>();
+                    if (outline != null)
+                    {
+                        outline.enabled = true;
+                        outline.OutlineColor = Color.magenta;
+                    }
+                    else
+                    {
+                        outline = highlight.gameObject.AddComponent<Outline>();
+                        outline.enabled = true;
+                        outline.OutlineColor = Color.magenta;
+                        outline.OutlineWidth = 7.0f;
+                    }
                 }
             }
             else
@@ -55,24 +76,26 @@ public class OutlineSelection : MonoBehaviour
         {
             if (highlight)
             {
-                if (selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
+                if (selections.Count < maxSelections) // jeÂ¿eli mniej niÂ¿ max wybranych 
                 {
-                    // dodaj now¹ selekcje
+                    // dodaj nowÂ¹ selekcje
                     selections.Add(highlight);
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
+                    highlight.gameObject.GetComponent<ObjectInfo>().SetIsSelected(true);
                     highlight = null;
                 }
             }
             else
             {
-                // Je¿eli ju¿ klineliœmy na dany obiekt to usun go z wybranych
+                // JeÂ¿eli juÂ¿ klineliÅ“my na dany obiekt to usun go z wybranych
                 if (Physics.Raycast(ray, out raycastHit))
                 {
                     Transform clickedObject = raycastHit.transform;
-                    if (selections.Contains(clickedObject)) // jezeli wybrane zawieraj¹ dany obiekt
+                    if (selections.Contains(clickedObject)) // jezeli wybrane zawierajÂ¹ dany obiekt
                     {
                         // to usun
                         selections.Remove(clickedObject);
+                        clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);
                         clickedObject.gameObject.GetComponent<Outline>().enabled = false;
                     }
                 }
