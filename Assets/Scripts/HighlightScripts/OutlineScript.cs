@@ -10,6 +10,10 @@ public class OutlineSelection : MonoBehaviour
     private List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
     private int maxSelections = 3;
     public List<Transform> GetSelections() { return selections; }
+    public void SetMaxSelections(int maxSelections)
+    {
+        this.maxSelections = maxSelections;
+    }
 
     void Update()
     {
