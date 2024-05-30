@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (horizontalInput!=0 || verticalInput!=0)
         {
-            Debug.Log(speedTimeLeft);
             if (speedTimeLeft > 0 && Input.GetKey(KeyCode.LeftShift))
             {
                 moveDirection = verticalInput * orientation.forward * runSpeed + horizontalInput * orientation.right * runSpeed;
