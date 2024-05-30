@@ -60,6 +60,7 @@ public class OutlineSelection : MonoBehaviour
                     // dodaj now¹ selekcje
                     selections.Add(highlight);
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
+                    highlight.gameObject.GetComponent<ObjectInfo>().SetIsSelected(true);
                     highlight = null;
                 }
             }
@@ -73,7 +74,9 @@ public class OutlineSelection : MonoBehaviour
                     {
                         // to usun
                         selections.Remove(clickedObject);
+                        clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);
                         clickedObject.gameObject.GetComponent<Outline>().enabled = false;
+                        
                     }
                 }
             }
