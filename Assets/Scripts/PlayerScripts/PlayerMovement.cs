@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed= 0.05f;
-    public float runSpeed = 0.2f;
+    public float runSpeed = 0.1f;
     public float speedTime = 1;
     float speedTimeLeft;
     Transform orientation;
