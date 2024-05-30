@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Home.unity
     guid: 2a81f20904480b641aec6e8923c855a4
   - enabled: 1
-    path: Assets/Scenes/HudScene.unity
-    guid: e724fdf31b2c7744685fe89a529fbe74
+    path: Assets/Scenes/HomeLozko.unity
+    guid: efd09fd9ab2d14b409feaca776f0588b
   - enabled: 1
     path: Assets/Scenes/Sleeping.unity
     guid: ccdee33b2d420fe409fd0ffc1a084e81
+  - enabled: 1
+    path: Assets/Scenes/Death.unity
+    guid: f61d6cdae0012ed4bab34395118fae47
   m_configObjects: {}
