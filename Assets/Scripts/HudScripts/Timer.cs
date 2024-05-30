@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Timer : MonoBehaviour
     
     static public float leftTime;
     static public bool finish;
+    static private bool isSet = false;
     private int warningTime = 15;
 
     // Start is called before the first frame update
@@ -18,20 +20,23 @@ public class Timer : MonoBehaviour
     {
         warningText.SetActive(false);
         finish = false;
-        //testy
-        SetTime(30);
     }
 
-    void SetTime(int t)
+    public static void SetTime(int t)
     {
         leftTime = t;
         finish = false;
+        isSet = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(finish == false)
+        if(isSet == false)
+        {
+            timerText.text = "Rozejrzyj siê";
+        }
+        else if(finish == false)
         {
             leftTime -= Time.deltaTime;
             int min = Mathf.FloorToInt(leftTime/60);
@@ -46,7 +51,8 @@ public class Timer : MonoBehaviour
             if (leftTime <= 0)
             {
                 finish = true;
-                timerText.text = string.Format("STOP", min, sec);
+                timerText.text = "Smieræ";
+                SceneManager.LoadScene("Death");
             }
         }
     }
