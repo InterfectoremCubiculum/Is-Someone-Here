@@ -9,6 +9,7 @@ public class OutlineSelection : MonoBehaviour
     private RaycastHit raycastHit;
     private List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
     private int maxSelections = 3;
+    public List<Transform> GetSelections() { return selections; }
 
     void Update()
     {
