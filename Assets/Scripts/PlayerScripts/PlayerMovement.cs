@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -33,14 +34,14 @@ public class PlayerMovement : MonoBehaviour
         {
             RegenStamina();
         }
+        StaminaBar.SetStamina(speedTimeLeft, speedTime);
     }
 
     private void RegenStamina()
     {
         if(speedTimeLeft<speedTime)
         {
-            speedTimeLeft += Time.deltaTime;
-            Debug.Log(speedTimeLeft);
+            speedTimeLeft += Time.deltaTime/4;
         }
     }
 
