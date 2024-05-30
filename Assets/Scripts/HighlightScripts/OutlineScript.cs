@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 public class OutlineSelection : MonoBehaviour
 {
     private Transform highlight;
-    private Transform selection;
     private RaycastHit raycastHit;
+    private List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
+    private int maxSelections = 3;
 
     void Update()
     {
@@ -18,10 +19,10 @@ public class OutlineSelection : MonoBehaviour
             highlight = null;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) //Make sure you have EventSystem in the hierarchy before using EventSystem
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) // Make sure you have EventSystem in the hierarchy before using EventSystem
         {
             highlight = raycastHit.transform;
-            if (highlight.CompareTag("Selectable") && highlight != selection)
+            if (highlight.CompareTag("Selectable") && !selections.Contains(highlight))
             {
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
@@ -31,8 +32,8 @@ public class OutlineSelection : MonoBehaviour
                 {
                     Outline outline = highlight.gameObject.AddComponent<Outline>();
                     outline.enabled = true;
-                    highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.magenta;
-                    highlight.gameObject.GetComponent<Outline>().OutlineWidth = 7.0f;
+                    outline.OutlineColor = Color.magenta;
+                    outline.OutlineWidth = 7.0f;
                 }
             }
             else
@@ -46,23 +47,28 @@ public class OutlineSelection : MonoBehaviour
         {
             if (highlight)
             {
-                if (selection != null)
+                if (selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
                 {
-                    selection.gameObject.GetComponent<Outline>().enabled = false;
+                    // dodaj now¹ selekcje
+                    selections.Add(highlight);
+                    highlight.gameObject.GetComponent<Outline>().enabled = true;
+                    highlight = null;
                 }
-                selection = raycastHit.transform;
-                selection.gameObject.GetComponent<Outline>().enabled = true;
-                highlight = null;
             }
             else
             {
-                if (selection)
+                // Je¿eli ju¿ klineliœmy na dany obiekt to usun go z wybranych
+                if (Physics.Raycast(ray, out raycastHit))
                 {
-                    selection.gameObject.GetComponent<Outline>().enabled = false;
-                    selection = null;
+                    Transform clickedObject = raycastHit.transform;
+                    if (selections.Contains(clickedObject)) // jezeli wybrane zawieraj¹ dany obiekt
+                    {
+                        // to usun
+                        selections.Remove(clickedObject);
+                        clickedObject.gameObject.GetComponent<Outline>().enabled = false;
+                    }
                 }
             }
         }
     }
-
 }
