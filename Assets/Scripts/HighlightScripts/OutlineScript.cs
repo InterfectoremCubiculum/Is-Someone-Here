@@ -55,9 +55,9 @@ public class OutlineSelection : MonoBehaviour
         {
             if (highlight)
             {
-                if (selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
+                if (selections.Count < maxSelections) // jeÂ¿eli mniej niÂ¿ max wybranych 
                 {
-                    // dodaj now¹ selekcje
+                    // dodaj nowÂ¹ selekcje
                     selections.Add(highlight);
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
                     highlight.gameObject.GetComponent<ObjectInfo>().SetIsSelected(true);
@@ -66,17 +66,16 @@ public class OutlineSelection : MonoBehaviour
             }
             else
             {
-                // Je¿eli ju¿ klineliœmy na dany obiekt to usun go z wybranych
+                // JeÂ¿eli juÂ¿ klineliÅ“my na dany obiekt to usun go z wybranych
                 if (Physics.Raycast(ray, out raycastHit))
                 {
                     Transform clickedObject = raycastHit.transform;
-                    if (selections.Contains(clickedObject)) // jezeli wybrane zawieraj¹ dany obiekt
+                    if (selections.Contains(clickedObject)) // jezeli wybrane zawierajÂ¹ dany obiekt
                     {
                         // to usun
                         selections.Remove(clickedObject);
                         clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);
                         clickedObject.gameObject.GetComponent<Outline>().enabled = false;
-
                     }
                 }
             }
