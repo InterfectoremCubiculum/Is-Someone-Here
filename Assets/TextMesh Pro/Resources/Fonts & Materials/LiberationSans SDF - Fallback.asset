@@ -274,18 +274,6 @@ MonoBehaviour:
     m_Unicode: 380
     m_GlyphIndex: 318
     m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 347
-    m_GlyphIndex: 285
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 346
-    m_GlyphIndex: 284
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 261
-    m_GlyphIndex: 199
-    m_Scale: 1
   m_AtlasTextures:
   - {fileID: 28268798066460806}
   m_AtlasTextureIndex: 0
@@ -308,18 +296,6 @@ MonoBehaviour:
     m_Y: 247
     m_Width: 54
     m_Height: 82
-  - m_X: 0
-    m_Y: 329
-    m_Width: 57
-    m_Height: 83
-  - m_X: 0
-    m_Y: 412
-    m_Width: 70
-    m_Height: 97
-  - m_X: 54
-    m_Y: 166
-    m_Width: 65
-    m_Height: 83
   m_FreeGlyphRects:
   - m_X: 61
     m_Y: 0
@@ -341,7 +317,6 @@ MonoBehaviour:
     m_Y: 166
     m_Width: 457
     m_Height: 345
-
   m_fontInfo:
     Name: Liberation Sans
     PointSize: 86
