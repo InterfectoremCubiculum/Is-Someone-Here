@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed= 0.05f;
     public float runSpeed = 0.1f;
     public float speedTime = 1;
+    public AudioSource moveSound;
     float speedTimeLeft;
     Transform orientation;
     float horizontalInput;
@@ -55,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (speedTimeLeft > 0 && Input.GetKey(KeyCode.LeftShift))
             {
+                moveSound.clip = Resources.Load<AudioClip>("fastWalk");
+                if (!moveSound.isPlaying)
+                {
+                    moveSound.Play();
+                }
                 moveDirection = verticalInput * orientation.forward * runSpeed + horizontalInput * orientation.right * runSpeed;
                 transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
                 speedTimeLeft -= Time.deltaTime;
@@ -62,16 +68,28 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.LeftShift))
             {
+                moveSound.clip = Resources.Load<AudioClip>("calmWalk");
+                if (!moveSound.isPlaying)
+                {
+                    moveSound.Play();
+                }
                 moveDirection = verticalInput * orientation.forward * moveSpeed + horizontalInput * orientation.right * moveSpeed;
                 transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
                 return true;
             }
+            else
             {
+                moveSound.clip = Resources.Load<AudioClip>("calmWalk");
+                if (!moveSound.isPlaying)
+                {
+                    moveSound.Play();
+                }
                 moveDirection = verticalInput * orientation.forward * moveSpeed + horizontalInput * orientation.right * moveSpeed;
                 transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
                 return false;
             }
         }
+        moveSound.Stop();
         return false;
     }
     
