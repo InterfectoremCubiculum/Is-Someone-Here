@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
-    public Transform orientation;
+    public float moveSpeed= 0.05f;
+    Transform orientation;
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         eyesCamera = Camera.main;
+        orientation = eyesCamera.transform;
     }
 
     // Update is called once per frame
