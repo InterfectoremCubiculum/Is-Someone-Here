@@ -12,11 +12,9 @@ public class MouseLookAround : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("wywyo³anie start");
         if(ShowMouseCursor == false)
         {
             Cursor.visible = false;
-            Debug.Log(Cursor.visible);
         }
     }
     void Update()
