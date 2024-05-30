@@ -6,6 +6,8 @@ public class Hud : MonoBehaviour
 {
     static GameObject PressText;
     static GameObject SleepPressText;
+    private static GameObject Eyelids;
+    private static Animator animEyelids;
     public static void ShowPressText()
     {
         PressText.SetActive(true);
@@ -30,6 +32,18 @@ public class Hud : MonoBehaviour
         }
         return false;
     }
+    public static void closeEyelids()
+    {
+        Eyelids.SetActive(true);
+        animEyelids.SetTrigger("close");
+    }
+
+    public static void openEyelids()
+    {
+        Eyelids.SetActive(false);
+        animEyelids.SetTrigger("open");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +51,10 @@ public class Hud : MonoBehaviour
         PressText.SetActive(false);
         SleepPressText = GameObject.Find("/HudCanvas/SleepPressText");
         SleepPressText.SetActive(false);
+        Eyelids = GameObject.Find("/HudCanvas/Eyelids");
+        animEyelids = Eyelids.gameObject.GetComponent<Animator>();
+        animEyelids.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+        Eyelids.SetActive(false);
     }
 
     // Update is called once per frame
