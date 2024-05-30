@@ -32,15 +32,13 @@ public class OutlineSelection : MonoBehaviour
             highlight = raycastHit.transform;
             if (highlight.CompareTag("Selectable") && !selections.Contains(highlight))
             {
-                Outline outline = highlight.gameObject.GetComponent<Outline>();
-                if (outline != null)
+                if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
-                    outline.enabled = true;
-                    outline.OutlineColor = Color.magenta;
+                    highlight.gameObject.GetComponent<Outline>().enabled = true;
                 }
                 else
                 {
-                    outline = highlight.gameObject.AddComponent<Outline>();
+                    Outline outline = highlight.gameObject.AddComponent<Outline>();
                     outline.enabled = true;
                     outline.OutlineColor = Color.magenta;
                     outline.OutlineWidth = 7.0f;
@@ -62,6 +60,7 @@ public class OutlineSelection : MonoBehaviour
                     // dodaj now¹ selekcje
                     selections.Add(highlight);
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
+                    highlight.gameObject.GetComponent<ObjectInfo>().SetIsSelected(true);
                     highlight = null;
                 }
             }
@@ -75,12 +74,9 @@ public class OutlineSelection : MonoBehaviour
                     {
                         // to usun
                         selections.Remove(clickedObject);
-                        Outline outline = clickedObject.gameObject.GetComponent<Outline>();
-                        if (outline != null)
-                        {
-                            outline.OutlineColor = Color.green;
-                            outline.enabled = false;
-                        }
+                        clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);
+                        clickedObject.gameObject.GetComponent<Outline>().enabled = false;
+
                     }
                 }
             }
