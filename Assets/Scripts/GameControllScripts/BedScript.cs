@@ -28,11 +28,13 @@ public class BedScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             nearBed = true;
+            Hud.ShowSleepPressText();
         }
     }
     private void OnTriggerExit(Collider other)
     {
         nearBed = false;
+        Hud.HideSleepPressText();
     }
 
 }

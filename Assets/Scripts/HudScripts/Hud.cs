@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Hud : MonoBehaviour
-{   
+{
     static GameObject PressText;
+    static GameObject SleepPressText;
     public static void ShowPressText()
     {
         PressText.SetActive(true);
@@ -12,6 +13,14 @@ public class Hud : MonoBehaviour
     public static void HidePressText()
     {
         PressText.SetActive(false);
+    }
+    public static void ShowSleepPressText()
+    {
+        SleepPressText.SetActive(true);
+    }
+    public static void HideSleepPressText()
+    {
+        SleepPressText.SetActive(false);
     }
     public static bool IsActive() 
     {
@@ -26,6 +35,8 @@ public class Hud : MonoBehaviour
     {
         PressText = GameObject.Find("/HudCanvas/PressText");
         PressText.SetActive(false);
+        SleepPressText = GameObject.Find("/HudCanvas/SleepPressText");
+        SleepPressText.SetActive(false);
     }
 
     // Update is called once per frame
