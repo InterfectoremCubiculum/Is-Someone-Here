@@ -32,13 +32,15 @@ public class OutlineSelection : MonoBehaviour
             highlight = raycastHit.transform;
             if (highlight.CompareTag("Selectable") && !selections.Contains(highlight))
             {
-                if (highlight.gameObject.GetComponent<Outline>() != null)
+                Outline outline = highlight.gameObject.GetComponent<Outline>();
+                if (outline != null)
                 {
-                    highlight.gameObject.GetComponent<Outline>().enabled = true;
+                    outline.enabled = true;
+                    outline.OutlineColor = Color.magenta;
                 }
                 else
                 {
-                    Outline outline = highlight.gameObject.AddComponent<Outline>();
+                    outline = highlight.gameObject.AddComponent<Outline>();
                     outline.enabled = true;
                     outline.OutlineColor = Color.magenta;
                     outline.OutlineWidth = 7.0f;
@@ -73,7 +75,12 @@ public class OutlineSelection : MonoBehaviour
                     {
                         // to usun
                         selections.Remove(clickedObject);
-                        clickedObject.gameObject.GetComponent<Outline>().enabled = false;
+                        Outline outline = clickedObject.gameObject.GetComponent<Outline>();
+                        if (outline != null)
+                        {
+                            outline.OutlineColor = Color.green;
+                            outline.enabled = false;
+                        }
                     }
                 }
             }
