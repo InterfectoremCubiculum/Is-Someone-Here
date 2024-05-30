@@ -5,14 +5,22 @@ using UnityEngine.EventSystems;
 
 public class OutlineSelection : MonoBehaviour
 {
+    private Transform player;
     private Transform highlight;
     private RaycastHit raycastHit;
     private List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
     private int maxSelections = 3;
+    public float maxSelectionRange;
     public List<Transform> GetSelections() { return selections; }
     public void SetMaxSelections(int maxSelections)
     {
         this.maxSelections = maxSelections;
+    }
+
+    void Start()
+    {
+        player = Camera.main.transform;
+        maxSelectionRange = 3;
     }
 
     void Update()
@@ -31,7 +39,10 @@ public class OutlineSelection : MonoBehaviour
         {
             if (Hud.IsActive()) { Hud.HidePressText(); }
             highlight = raycastHit.transform;
-            if ((highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive")) && !selections.Contains(highlight))
+            float distance = Vector3.Distance(player.position, highlight.position);
+            Debug.Log("Raycast hit: " + highlight.name + " at distance: " + distance + " <= " + maxSelectionRange);
+
+            if ((highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive")) && !selections.Contains(highlight) && distance <= maxSelectionRange)
             {
                 if (highlight.CompareTag("Interactive"))
                 {
@@ -72,7 +83,8 @@ public class OutlineSelection : MonoBehaviour
         {
             if (highlight)
             {
-                if (selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
+                float distance = Vector3.Distance(player.position, highlight.position);
+                if (distance <= maxSelectionRange && selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
                 {
                     // dodaj now¹ selekcje
                     selections.Add(highlight);
