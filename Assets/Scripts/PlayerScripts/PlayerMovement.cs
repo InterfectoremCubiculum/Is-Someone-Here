@@ -35,16 +35,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer()
     {
-        if (verticalInput != 0 && horizontalInput != 0)
-        {
+
             moveDirection = verticalInput* orientation.forward * moveSpeed + horizontalInput*orientation.right * moveSpeed;
             transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
-        }
-        else
-        {
-            moveDirection = verticalInput * orientation.forward * moveSpeed + horizontalInput * orientation.right * moveSpeed;
-            transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
-        }
     }
     
 }
