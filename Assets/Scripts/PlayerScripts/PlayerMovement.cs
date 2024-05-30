@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed= 0.05f;
     public float runSpeed = 0.2f;
-    public int speedTime = 2;
+    public float speedTime = 1;
     float speedTimeLeft;
     Transform orientation;
     float horizontalInput;
@@ -29,7 +29,19 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
+        if (!MovePlayer())
+        {
+            RegenStamina();
+        }
+    }
+
+    private void RegenStamina()
+    {
+        if(speedTimeLeft<speedTime)
+        {
+            speedTimeLeft += Time.deltaTime;
+            Debug.Log(speedTimeLeft);
+        }
     }
 
     private void MyInput()
@@ -37,19 +49,31 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }
-    private void MovePlayer()
+    private bool MovePlayer()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && speedTimeLeft>0)
+        if (horizontalInput!=0 || verticalInput!=0)
         {
-            moveDirection = verticalInput * orientation.forward * runSpeed + horizontalInput * orientation.right * runSpeed;
-            transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
-            speedTimeLeft -= Time.deltaTime;
+            Debug.Log(speedTimeLeft);
+            if (speedTimeLeft > 0 && Input.GetKey(KeyCode.LeftShift))
+            {
+                moveDirection = verticalInput * orientation.forward * runSpeed + horizontalInput * orientation.right * runSpeed;
+                transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
+                speedTimeLeft -= Time.deltaTime;
+                return true;
+            }
+            else if (Input.GetKey(KeyCode.LeftShift))
+            {
+                moveDirection = verticalInput * orientation.forward * moveSpeed + horizontalInput * orientation.right * moveSpeed;
+                transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
+                return true;
+            }
+            {
+                moveDirection = verticalInput * orientation.forward * moveSpeed + horizontalInput * orientation.right * moveSpeed;
+                transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
+                return false;
+            }
         }
-        else
-        {
-            moveDirection = verticalInput * orientation.forward * moveSpeed + horizontalInput * orientation.right * moveSpeed;
-            transform.position += new Vector3(moveDirection.x, 0f, moveDirection.z);
-        }
+        return false;
     }
     
 }
