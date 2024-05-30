@@ -17,4 +17,8 @@ public class ObjectInfo : MonoBehaviour
     {
         
     }
+    public void SetIsSelected(bool isSelected)
+    {
+        this.isSelected = isSelected;
+    }
 }
