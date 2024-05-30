@@ -32,8 +32,6 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        Debug.Log(horizontalInput);
-        Debug.Log(verticalInput);
     }
     private void MovePlayer()
     {
