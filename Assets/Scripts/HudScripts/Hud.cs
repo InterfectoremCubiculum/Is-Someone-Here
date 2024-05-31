@@ -71,7 +71,7 @@ public class Hud : MonoBehaviour
 
     public static void openEyelids()
     {
-        Eyelids.SetActive(false);
+        //Eyelids.SetActive(false);
         animEyelids.SetTrigger("open");
     }
 
