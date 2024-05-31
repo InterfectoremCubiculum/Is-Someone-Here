@@ -7060,7 +7060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSelectionRange: 3
-  lightObjectName: Point light1
+  lightObjectName: Point Light1
 --- !u!65 &631911985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12952,7 +12952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSelectionRange: 3
-  lightObjectName: Point light2
+  lightObjectName: Point Light2
 --- !u!65 &1186258165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16522,7 +16522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSelectionRange: 3
-  lightObjectName: Point light3
+  lightObjectName: Point Light3
 --- !u!65 &1575971936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22093,7 +22093,7 @@ GameObject:
   - component: {fileID: 108000014046581944}
   m_Layer: 0
   m_Name: Point light3
-  m_TagString: Untagged
+  m_TagString: Point Light3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22236,7 +22236,7 @@ GameObject:
   - component: {fileID: 108000011651534604}
   m_Layer: 0
   m_Name: Point light1
-  m_TagString: Untagged
+  m_TagString: Point Light1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22375,7 +22375,7 @@ GameObject:
   - component: {fileID: 108000014572046840}
   m_Layer: 0
   m_Name: Point light2
-  m_TagString: Untagged
+  m_TagString: Point Light2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22636,7 +22636,7 @@ GameObject:
   - component: {fileID: 108000011542845980}
   m_Layer: 0
   m_Name: Point light2
-  m_TagString: Untagged
+  m_TagString: Point Light2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22712,7 +22712,7 @@ GameObject:
   - component: {fileID: 108000012074371212}
   m_Layer: 0
   m_Name: Point light2
-  m_TagString: Interactive
+  m_TagString: Point Light2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
