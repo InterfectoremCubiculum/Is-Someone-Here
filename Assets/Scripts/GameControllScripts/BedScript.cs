@@ -37,6 +37,13 @@ public class BedScript : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.E) && nearBed == true)
         {
+            int next = Hud.GetCurrent() + 1;
+            if (Hud.current == 0)
+            {
+                Hud.SetCurrent(next);
+                SceneManager.LoadScene("Sleeping");
+                return;
+            }
             if (Hud.GetMarks() != 0)
             {
                 Debug.Log("nie oznaczy³eœ anomali");
@@ -58,7 +65,7 @@ public class BedScript : MonoBehaviour
                 }
             }
 
-            int next = Hud.GetCurrent() + 1;
+            
             if (next == Hud.Levels.Count)
             {
                 Debug.Log("to by³ ostatni poziom");
