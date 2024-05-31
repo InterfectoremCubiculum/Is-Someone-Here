@@ -16,7 +16,7 @@ public class Winner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-
+            SceneManager.LoadScene("Menu");
         }
     }
 }
