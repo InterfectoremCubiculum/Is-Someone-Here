@@ -65,10 +65,18 @@ public class OutlineSelection : MonoBehaviour
                 else if (highlight.CompareTag("ClosedDoor"))
                 {
                     Hud.ShowPressText();
-                    Animator anim = highlight.gameObject.GetComponent<Animator>();
                     if (Input.GetKeyDown("e"))
                     {
                         closedSound.Play();
+                    }
+                    highlight = null;
+                }
+                else if (highlight.CompareTag("Interactive"))
+                {
+                    Hud.ShowPressText();
+                    if (Input.GetKeyDown("e"))
+                    {
+                        
                     }
                     highlight = null;
                 }
