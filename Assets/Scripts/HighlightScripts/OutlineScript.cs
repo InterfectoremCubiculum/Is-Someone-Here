@@ -40,7 +40,6 @@ public class OutlineSelection : MonoBehaviour
             if (Hud.IsActive()) { Hud.HidePressText(); }
             highlight = raycastHit.transform;
             float distance = Vector3.Distance(player.position, highlight.position);
-            Debug.Log("Raycast hit: " + highlight.name + " at distance: " + distance + " <= " + maxSelectionRange);
 
             if ((highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive")) && !selections.Contains(highlight) && distance <= maxSelectionRange)
             {
