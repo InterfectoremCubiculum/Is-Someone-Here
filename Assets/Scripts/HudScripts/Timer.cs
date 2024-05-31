@@ -45,6 +45,14 @@ public class Timer : MonoBehaviour
             int sec = Mathf.FloorToInt(leftTime%60);
             if (min == 0 && sec == warningTime)
             {
+                if (!tickingAudio.isPlaying)
+                {
+                    tickingAudio.Play();
+                }
+                if (!entityAudio.isPlaying)
+                {
+                    entityAudio.Play();
+                }
                 timerText.color = Color.red;
                 warningText.SetActive(true);
 
