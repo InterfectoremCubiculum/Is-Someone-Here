@@ -9,7 +9,7 @@ public class OutlineSelection : MonoBehaviour
     private Transform highlight;
     private RaycastHit raycastHit;
     public static List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
-    public int maxSelections = 3;
+    private int maxSelections;
     public float maxSelectionRange;
     public AudioSource selectSound;
     public AudioSource openSound;
@@ -27,7 +27,8 @@ public class OutlineSelection : MonoBehaviour
     void Start()
     {
         player = Camera.main.transform;
-        maxSelectionRange = maxSelections;
+        maxSelectionRange = 3;
+        SetMaxSelections(Hud.AnomalyCount[Hud.GetCurrent()]);
     }
 
     void Update()
@@ -115,6 +116,7 @@ public class OutlineSelection : MonoBehaviour
                     selectSound.Play();
                     Hud.SetMarks(Hud.marks - 1);
                     selections.Add(highlight);
+                    highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.green;
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
                     highlight.gameObject.GetComponent<ObjectInfo>().SetIsSelected(true);
                     highlight = null;
@@ -133,6 +135,7 @@ public class OutlineSelection : MonoBehaviour
                         Hud.SetMarks(Hud.marks + 1);
                         selections.Remove(clickedObject);
                         clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);
+                        highlight.gameObject.GetComponent<Outline>().OutlineColor = Color.magenta;
                         clickedObject.gameObject.GetComponent<Outline>().enabled = false;
                     }
                 }
