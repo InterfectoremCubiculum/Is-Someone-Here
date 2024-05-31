@@ -22,5 +22,9 @@ public class Death : MonoBehaviour
             OutlineSelection.CleanSelection();
             SceneManager.LoadScene(currentLevel);
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 }
