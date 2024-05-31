@@ -20,7 +20,7 @@ public class Sleeping : MonoBehaviour
         }
         else
         {
-            textInside.text = "DŸwiêki cichn¹, a ty usypiasz \r\n Kolejnego wieczoru sytuacja siê powtarza\r\n\r\n";
+            textInside.text = "DŸwiêki cichn¹, a ty usypiasz \r\n Po chwili jednak ponownie siê wybudzasz\r\n\r\n";
         }
         nextLevel = Hud.Levels[Hud.GetCurrent()];
         levelTime = Hud.LevelsTimes[Hud.GetCurrent()];
