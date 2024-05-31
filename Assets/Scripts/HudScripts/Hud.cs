@@ -19,6 +19,7 @@ public class Hud : MonoBehaviour
     //public static List<string> Levels = new List<string>() {"Level0","Level1","Level2"};
     public static List<string> Levels = new List<string>() { "Home", "Level1", "Level2", "Level3", "Level4","Level5"};
     public static List<int> LevelsTimes = new List<int>() {300,120,90,90,60,60};
+    public static List<int> AnomalyCount = new List<int>() {0,3,3,3,3,3};
     public static int current = 0;
     public static int marks;
     public static void SetCurrent(int c)
@@ -118,7 +119,7 @@ public class Hud : MonoBehaviour
         MarksText = GameObject.Find("/HudCanvas/MarksText");
         CurrentLevelText = GameObject.Find("/HudCanvas/CurrentLevelText");
         SetCurrent(current);
-        SetMarks(3);
+        SetMarks(AnomalyCount[current]);
     }
 
     public static void SetShouldActive(bool t) 
