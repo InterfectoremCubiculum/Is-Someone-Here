@@ -14,7 +14,7 @@ public class EntitiScrpit : MonoBehaviour
     public GameObject lightBathRoom;
     public GameObject lightGarage;
     public GameObject lightSleepRoom;
-    public float eventTime = 15;
+    public float eventTime = 10;
     float leftEventTime;
     int random;
     void Start()
