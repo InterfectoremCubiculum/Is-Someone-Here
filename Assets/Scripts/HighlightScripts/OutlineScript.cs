@@ -48,7 +48,7 @@ public class OutlineSelection : MonoBehaviour
             highlight = raycastHit.transform;
             float distance = Vector3.Distance(player.position, highlight.position);
 
-            if ((highlight.CompareTag("Door") || highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive"))|| highlight.CompareTag("ClosedDoor") && !selections.Contains(highlight) && distance <= maxSelectionRange)
+            if ((highlight.CompareTag("Door") || highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive")|| highlight.CompareTag("ClosedDoor")) && !selections.Contains(highlight) && distance <= maxSelectionRange)
             {
                 if (highlight.CompareTag("Door"))
                 {
