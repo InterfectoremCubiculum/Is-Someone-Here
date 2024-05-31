@@ -66,13 +66,13 @@ public class Hud : MonoBehaviour
     public static void closeEyelids()
     {
         Eyelids.SetActive(true);
-        animEyelids.SetTrigger("close");
+        animEyelids.SetTrigger("Close");
     }
 
     public static void openEyelids()
     {
         //Eyelids.SetActive(false);
-        animEyelids.SetTrigger("open");
+        animEyelids.SetTrigger("Open");
     }
 
     // Start is called before the first frame update
