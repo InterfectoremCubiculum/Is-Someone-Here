@@ -11,6 +11,9 @@ public class OutlineSelection : MonoBehaviour
     public static List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
     private int maxSelections = 3;
     public float maxSelectionRange;
+    public AudioSource selectSound;
+    public AudioSource openSound;
+    public AudioSource closedSound;
     public static List<Transform> GetSelections() { return selections; }
     public static void CleanSelection()
     {
@@ -45,16 +48,27 @@ public class OutlineSelection : MonoBehaviour
             highlight = raycastHit.transform;
             float distance = Vector3.Distance(player.position, highlight.position);
 
-            if ((highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive")) && !selections.Contains(highlight) && distance <= maxSelectionRange)
+            if ((highlight.CompareTag("Door") || highlight.CompareTag("Selectable") || highlight.CompareTag("Interactive")|| highlight.CompareTag("ClosedDoor")) && !selections.Contains(highlight) && distance <= maxSelectionRange)
             {
-                if (highlight.CompareTag("Interactive"))
+                if (highlight.CompareTag("Door"))
                 {
                     Hud.ShowPressText();
                     Animator anim = highlight.gameObject.GetComponent<Animator>();
                     if (Input.GetKeyDown("e"))
                     {
+                        openSound.Play();
                         anim.StopPlayback();
                         anim.SetBool("isOpen_Obj_1", !anim.GetBool("isOpen_Obj_1"));
+                    }
+                    highlight = null;
+                }
+                else if (highlight.CompareTag("ClosedDoor"))
+                {
+                    Hud.ShowPressText();
+                    Animator anim = highlight.gameObject.GetComponent<Animator>();
+                    if (Input.GetKeyDown("e"))
+                    {
+                        closedSound.Play();
                     }
                     highlight = null;
                 }
@@ -90,6 +104,7 @@ public class OutlineSelection : MonoBehaviour
                 if (distance <= maxSelectionRange && selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
                 {
                     // dodaj now¹ selekcje
+                    selectSound.Play();
                     Hud.SetMarks(Hud.marks - 1);
                     selections.Add(highlight);
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
@@ -106,6 +121,7 @@ public class OutlineSelection : MonoBehaviour
                     if (selections.Contains(clickedObject)) // jezeli wybrane zawieraj¹ dany obiekt
                     {
                         // to usun
+                        selectSound.Play();
                         Hud.SetMarks(Hud.marks + 1);
                         selections.Remove(clickedObject);
                         clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);

@@ -7,6 +7,8 @@ TagManager:
   - Selectable
   - Interactive
   - Switch
+  - Door
+  - ClosedDoor
   layers:
   - Default
   - TransparentFX
