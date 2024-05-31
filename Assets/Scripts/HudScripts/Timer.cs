@@ -14,6 +14,8 @@ public class Timer : MonoBehaviour
     static public bool finish;
     static private bool isSet = false;
     private int warningTime = 15;
+    public AudioSource tickingAudio;
+    public AudioSource entityAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,7 @@ public class Timer : MonoBehaviour
             {
                 timerText.color = Color.red;
                 warningText.SetActive(true);
+
             }
 
             timerText.text = string.Format("{0:00}:{1:00}",min,sec);
