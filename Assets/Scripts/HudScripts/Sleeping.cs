@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,7 @@ public class Sleeping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Timer.SetTime(levelTime);
+            OutlineSelection.CleanSelection();
             SceneManager.LoadScene(nextLevel);
         }
     }
