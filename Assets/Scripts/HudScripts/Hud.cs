@@ -34,6 +34,14 @@ public class Hud : MonoBehaviour
         marks = m;
         TextMeshProUGUI textInside = MarksText.GetComponent<TextMeshProUGUI>();
         textInside.text = "Oznaczenia: "+marks;
+        if(marks == 0)
+        {
+            textInside.color = Color.red;
+        }
+        else
+        {
+            textInside.color = Color.white;
+        }
     }
     public static int GetMarks()
     {
