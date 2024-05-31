@@ -104,7 +104,7 @@ public class OutlineSelection : MonoBehaviour
         }
 
         // Selection
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("e") && Hud.GetCurrent()!=0)
         {
             if (highlight)
             {
