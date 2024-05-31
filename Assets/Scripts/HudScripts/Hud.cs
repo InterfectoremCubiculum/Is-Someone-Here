@@ -15,7 +15,7 @@ public class Hud : MonoBehaviour
 
     //public static List<string> Levels = new List<string>() {"Level0","Level1","Level2"};
     public static List<string> Levels = new List<string>() { "HomeLozko", "HomeLozko", "HomeLozko"};
-    public static List<int> LevelsTimes = new List<int>() {30,60,120};
+    public static List<int> LevelsTimes = new List<int>() {3600,60,30};
     public static int current = 0;
     public static int marks;
 
