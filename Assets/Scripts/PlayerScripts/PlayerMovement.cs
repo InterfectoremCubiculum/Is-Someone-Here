@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    private Animator anim;
     public float moveSpeed= 0.05f;
     public float runSpeed = 0.1f;
     public float speedTime = 1;
@@ -17,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     Camera eyesCamera;
     void Start()
     {
+        anim = GetComponent<Animator>();
+        anim.enabled = false;
         eyesCamera = Camera.main;
         orientation = eyesCamera.transform;
         speedTimeLeft = speedTime;

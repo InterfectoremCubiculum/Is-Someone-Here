@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25463,7 +25463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d7672c37a25bf4a96a7319f84be6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnomaly: 0
+  isAnomaly: 1
   isSelected: 0
 --- !u!33 &8483921687109983099
 MeshFilter:
@@ -25546,7 +25546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d7672c37a25bf4a96a7319f84be6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnomaly: 0
+  isAnomaly: 1
   isSelected: 0
 --- !u!23 &8858856518527874704
 MeshRenderer:
@@ -25669,7 +25669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d7672c37a25bf4a96a7319f84be6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnomaly: 0
+  isAnomaly: 1
   isSelected: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
