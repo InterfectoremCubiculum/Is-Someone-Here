@@ -9,6 +9,9 @@ TagManager:
   - Switch
   - Door
   - ClosedDoor
+  - Point Light1
+  - Point Light2
+  - Point Light3
   layers:
   - Default
   - TransparentFX

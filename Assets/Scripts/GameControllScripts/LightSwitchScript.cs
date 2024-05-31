@@ -28,20 +28,27 @@ public class LightSwitchScript : MonoBehaviour
 
             if (target.CompareTag("Switch") && distance <= maxSelectionRange)
             {
+                Hud.ShowPressText();
                 if (Input.GetKeyDown("e"))
                 {
-                    
-                    
-                    // Find the light object by name
-                    GameObject lightObject = GameObject.Find(lightObjectName);
-                    if (lightObject != null)
+                    try
                     {
-                        Light light = lightObject.GetComponent<Light>();
-                        if (light != null)
+                        GameObject[] lightObjects = GameObject.FindGameObjectsWithTag(lightObjectName);
+                        if (lightObjects != null)
                         {
-                            light.enabled = !light.enabled;
+                            foreach (GameObject lightObject in lightObjects)
+                            {
+                                Light light = lightObject.GetComponent<Light>();
+                                if (light != null)
+                                {
+                                    light.enabled = !light.enabled;
+                                }
+                            }
                         }
-                        
+                    }
+                    catch
+                    {
+
                     }
                     
                 }
