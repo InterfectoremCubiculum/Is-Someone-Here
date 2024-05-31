@@ -76,7 +76,6 @@ public class Hud : MonoBehaviour
     {
         if (shouldActive)
         {
-            Debug.Log(shouldActive);
             Eyelids.SetActive(true);
             animEyelids.SetTrigger("Close");
         }
