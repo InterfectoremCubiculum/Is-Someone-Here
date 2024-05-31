@@ -19,6 +19,7 @@ public class Death : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Timer.SetTime(levelTime);
+            OutlineSelection.CleanSelection();
             SceneManager.LoadScene(currentLevel);
         }
     }
