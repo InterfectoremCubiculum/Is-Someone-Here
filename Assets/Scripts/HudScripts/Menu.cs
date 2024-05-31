@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
    void Start()
     {
-
+        Hud.SetCurrent(0);
     }
     // Update is called once per frame
     void Update()
@@ -20,6 +20,10 @@ public class Menu : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I))
         {
             SceneManager.LoadScene("Manual");
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 }
