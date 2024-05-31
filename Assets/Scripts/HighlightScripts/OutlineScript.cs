@@ -12,6 +12,10 @@ public class OutlineSelection : MonoBehaviour
     private int maxSelections = 3;
     public float maxSelectionRange;
     public static List<Transform> GetSelections() { return selections; }
+    public static void CleanSelection()
+    {
+        selections.Clear();
+    }
     public void SetMaxSelections(int maxSelections)
     {
         this.maxSelections = maxSelections;
