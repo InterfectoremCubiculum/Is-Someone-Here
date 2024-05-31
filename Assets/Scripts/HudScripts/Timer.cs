@@ -78,7 +78,7 @@ public class Timer : MonoBehaviour
                 animDead.enabled = true;
                 animDead.SetBool("dying", true);
                 sleeped = true;
-                }
+            }
         }
     }
 }
