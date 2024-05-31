@@ -1,13 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Hud : MonoBehaviour
 {
     static GameObject PressText;
+    static GameObject MarksText;
+    static GameObject CurrentLevelText;
+
     static GameObject SleepPressText;
     private static GameObject Eyelids;
     private static Animator animEyelids;
+
+    //public static List<string> Levels = new List<string>() {"Level0","Level1","Level2"};
+    public static List<string> Levels = new List<string>() { "HomeLozko", "HomeLozko", "HomeLozko"};
+    public static List<int> LevelsTimes = new List<int>() {30,60,120};
+    public static int current = 0;
+    public static int marks;
+
+    public static void SetCurrent(int c)
+    {
+        current = c;
+        TextMeshProUGUI textInside = CurrentLevelText.GetComponent<TextMeshProUGUI>();
+        textInside.text = "Poziom: " + Levels[current];
+    }
+    public static int GetCurrent()
+    {
+        return current;
+    }
+    public static void SetMarks(int m)
+    {
+        marks = m;
+        TextMeshProUGUI textInside = MarksText.GetComponent<TextMeshProUGUI>();
+        textInside.text = "Oznaczenia: "+marks;
+    }
+    public static int GetMarks()
+    {
+        return marks;
+    }
     public static void ShowPressText()
     {
         PressText.SetActive(true);
@@ -55,7 +86,12 @@ public class Hud : MonoBehaviour
         animEyelids = Eyelids.gameObject.GetComponent<Animator>();
         animEyelids.cullingMode = AnimatorCullingMode.AlwaysAnimate;
         Eyelids.SetActive(false);
+        MarksText = GameObject.Find("/HudCanvas/MarksText");
+        CurrentLevelText = GameObject.Find("/HudCanvas/CurrentLevelText");
+        SetCurrent(current);
+        SetMarks(3);
     }
+
 
     // Update is called once per frame
     void Update()
