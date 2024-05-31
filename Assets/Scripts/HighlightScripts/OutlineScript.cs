@@ -86,6 +86,7 @@ public class OutlineSelection : MonoBehaviour
                 if (distance <= maxSelectionRange && selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
                 {
                     // dodaj now¹ selekcje
+                    Hud.SetMarks(Hud.marks - 1);
                     selections.Add(highlight);
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
                     highlight.gameObject.GetComponent<ObjectInfo>().SetIsSelected(true);
@@ -101,6 +102,7 @@ public class OutlineSelection : MonoBehaviour
                     if (selections.Contains(clickedObject)) // jezeli wybrane zawieraj¹ dany obiekt
                     {
                         // to usun
+                        Hud.SetMarks(Hud.marks + 1);
                         selections.Remove(clickedObject);
                         clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);
                         clickedObject.gameObject.GetComponent<Outline>().enabled = false;
