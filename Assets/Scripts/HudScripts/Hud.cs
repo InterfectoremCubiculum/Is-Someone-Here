@@ -24,8 +24,11 @@ public class Hud : MonoBehaviour
     public static void SetCurrent(int c)
     {
         current = c;
-        TextMeshProUGUI textInside = CurrentLevelText.GetComponent<TextMeshProUGUI>();
-        textInside.text = "Poziom: " + Levels[current];
+        if(CurrentLevelText != null)
+        {
+            TextMeshProUGUI textInside = CurrentLevelText.GetComponent<TextMeshProUGUI>();
+            textInside.text = "Poziom: " + Levels[current];
+        }        
     }
     public static int GetCurrent()
     {
