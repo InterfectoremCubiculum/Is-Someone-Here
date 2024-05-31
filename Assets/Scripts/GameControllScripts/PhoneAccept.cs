@@ -10,6 +10,8 @@ public class PhoneAccept : MonoBehaviour
     public float maxSelectionRange;
     public string phoneObjectName; // Public variable for the name of the phone object
     public AudioSource ownerTalk;
+    public AudioSource myTalk;
+    public AudioSource myTalk2;
 
     void Start()
     {
@@ -35,9 +37,21 @@ public class PhoneAccept : MonoBehaviour
                     AudioSource phone = phoneObject.GetComponent<AudioSource>();
                     phone.Stop();
                     ownerTalk.Play();
+                    StartCoroutine(playSound());
+                    StartCoroutine(playSound2());
                     phone.tag = "Untagged";
                 }
             }
         }
+    }
+    IEnumerator playSound()
+    {
+        yield return new WaitForSeconds(28);
+        myTalk.Play();
+    }
+    IEnumerator playSound2()
+    {
+        yield return new WaitForSeconds(45);
+        myTalk2.Play();
     }
 }
