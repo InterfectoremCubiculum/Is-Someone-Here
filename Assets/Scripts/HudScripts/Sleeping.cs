@@ -16,11 +16,11 @@ public class Sleeping : MonoBehaviour
         if (Hud.GetCurrent()-1 == 0)
         {
             Debug.Log("teraz");
-            textInside.text = "Po obudzeniu znajdü\r\n3 anomalie i je oznacz\r\n\r\n";
+            textInside.text = "Po obudzeniu znajdü\r\nwszytkie anomalie i je oznacz\r\n\r\n";
         }
         else
         {
-            textInside.text = "Znalaz≥eú wszystkie anomalie\r\npo wstaniu znajdü kolejne 3 anomalie\r\n\r\n";
+            textInside.text = "DüwiÍki cichnπ, a ty usypiasz \r\n Kolejnego wieczoru sytuacja siÍ powtarza\r\n\r\n";
         }
         nextLevel = Hud.Levels[Hud.GetCurrent()];
         levelTime = Hud.LevelsTimes[Hud.GetCurrent()];
