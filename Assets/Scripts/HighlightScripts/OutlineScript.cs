@@ -12,6 +12,7 @@ public class OutlineSelection : MonoBehaviour
     private int maxSelections = 3;
     public float maxSelectionRange;
     public AudioSource selectSound;
+    public AudioSource openSound;
     public static List<Transform> GetSelections() { return selections; }
     public static void CleanSelection()
     {
@@ -54,6 +55,7 @@ public class OutlineSelection : MonoBehaviour
                     Animator anim = highlight.gameObject.GetComponent<Animator>();
                     if (Input.GetKeyDown("e"))
                     {
+                        openSound.Play();
                         anim.StopPlayback();
                         anim.SetBool("isOpen_Obj_1", !anim.GetBool("isOpen_Obj_1"));
                     }
