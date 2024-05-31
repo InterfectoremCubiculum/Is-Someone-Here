@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Hud : MonoBehaviour
 {
-    static GameObject PressText;
+    public static GameObject PressText;
     static GameObject MarksText;
     static GameObject CurrentLevelText;
     
