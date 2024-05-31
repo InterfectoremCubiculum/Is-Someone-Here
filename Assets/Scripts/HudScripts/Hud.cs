@@ -103,10 +103,6 @@ public class Hud : MonoBehaviour
         CurrentLevelText = GameObject.Find("/HudCanvas/CurrentLevelText");
         SetCurrent(current);
         SetMarks(3);
-        if(current == 0)
-        {
-            SetMarks(0);
-        }
     }
 
     public static void SetShouldActive(bool t) 
