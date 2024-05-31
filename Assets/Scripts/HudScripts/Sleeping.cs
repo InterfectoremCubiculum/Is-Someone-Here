@@ -16,7 +16,7 @@ public class Sleeping : MonoBehaviour
         if (Hud.GetCurrent()-1 == 0)
         {
             Debug.Log("teraz");
-            textInside.text = "Budzisz siê\r\nczy mi siê wydaje czy coœ tu siê zmieni³o?\r\n\r\n";
+            textInside.text = "Budzisz siê pod wieczór\r\nCzy mi siê wydaje czy coœ tu siê zmieni³o?\r\n\r\n";
         }
         else
         {
