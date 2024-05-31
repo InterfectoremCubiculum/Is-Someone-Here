@@ -106,7 +106,7 @@ public class BedScript : MonoBehaviour
     }
     void DyingInBed() 
     {
-        Hud.SetShouldActive(false);
+        //Hud.SetShouldActive(false);
         Hud.HideSleepPressText();
         animDead.enabled = true;
         animDead.SetBool("dyingInBed", true);
