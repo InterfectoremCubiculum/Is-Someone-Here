@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hud : MonoBehaviour
 {
@@ -74,16 +76,12 @@ public class Hud : MonoBehaviour
     }
     public static void closeEyelids()
     {
-        //if (shouldActive)
-        //{
-            Eyelids.SetActive(true);
-            animEyelids.SetTrigger("Close");
-        //}
+        Eyelids.SetActive(true);
+        animEyelids.SetTrigger("Close");
     }
 
     public static void openEyelids()
     {
-        //Eyelids.SetActive(false);
         animEyelids.SetTrigger("Open");
     }
 
@@ -111,6 +109,10 @@ public class Hud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (animEyelids.GetCurrentAnimatorStateInfo(0).IsName("OpenEyelids") && animEyelids.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            Eyelids.SetActive(false);
+        }
+
     }
 }
