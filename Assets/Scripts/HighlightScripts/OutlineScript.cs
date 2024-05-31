@@ -11,6 +11,7 @@ public class OutlineSelection : MonoBehaviour
     public static List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
     private int maxSelections = 3;
     public float maxSelectionRange;
+    public AudioSource selectSound;
     public static List<Transform> GetSelections() { return selections; }
     public static void CleanSelection()
     {
@@ -90,6 +91,7 @@ public class OutlineSelection : MonoBehaviour
                 if (distance <= maxSelectionRange && selections.Count < maxSelections) // je¿eli mniej ni¿ max wybranych 
                 {
                     // dodaj now¹ selekcje
+                    selectSound.Play();
                     Hud.SetMarks(Hud.marks - 1);
                     selections.Add(highlight);
                     highlight.gameObject.GetComponent<Outline>().enabled = true;
@@ -106,6 +108,7 @@ public class OutlineSelection : MonoBehaviour
                     if (selections.Contains(clickedObject)) // jezeli wybrane zawieraj¹ dany obiekt
                     {
                         // to usun
+                        selectSound.Play();
                         Hud.SetMarks(Hud.marks + 1);
                         selections.Remove(clickedObject);
                         clickedObject.gameObject.GetComponent<ObjectInfo>().SetIsSelected(false);
