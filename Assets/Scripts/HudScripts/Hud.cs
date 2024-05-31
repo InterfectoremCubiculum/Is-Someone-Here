@@ -12,11 +12,11 @@ public class Hud : MonoBehaviour
     static GameObject SleepPressText;
     private static GameObject Eyelids;
     private static Animator animEyelids;
-    private static bool shouldActive = true;
+    //private static bool shouldActive = true;
 
     //public static List<string> Levels = new List<string>() {"Level0","Level1","Level2"};
-    public static List<string> Levels = new List<string>() { "Home", "Home", "Home"};
-    public static List<int> LevelsTimes = new List<int>() {3600,60,30};
+    public static List<string> Levels = new List<string>() { "Home", "Level1", "Level2", "Level3", "Level4"};
+    public static List<int> LevelsTimes = new List<int>() {3600,60,60,60,60};
     public static int current = 0;
     public static int marks;
     public static void SetCurrent(int c)
@@ -57,7 +57,7 @@ public class Hud : MonoBehaviour
     }
     public static void ShowSleepPressText()
     {
-        if (shouldActive)
+        //if (shouldActive)
             SleepPressText.SetActive(true);
     }
     public static void HideSleepPressText()
@@ -74,12 +74,11 @@ public class Hud : MonoBehaviour
     }
     public static void closeEyelids()
     {
-        if (shouldActive)
-        {
-            Debug.Log(shouldActive);
+        //if (shouldActive)
+        //{
             Eyelids.SetActive(true);
             animEyelids.SetTrigger("Close");
-        }
+        //}
     }
 
     public static void openEyelids()
@@ -107,7 +106,7 @@ public class Hud : MonoBehaviour
 
     public static void SetShouldActive(bool t) 
     { 
-        shouldActive = t;
+        //shouldActive = t;
     }
     // Update is called once per frame
     void Update()
