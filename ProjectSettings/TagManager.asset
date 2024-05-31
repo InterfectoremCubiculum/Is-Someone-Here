@@ -12,6 +12,7 @@ TagManager:
   - Point Light1
   - Point Light2
   - Point Light3
+  - Telephone
   layers:
   - Default
   - TransparentFX
