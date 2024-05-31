@@ -9,7 +9,7 @@ public class OutlineSelection : MonoBehaviour
     private Transform highlight;
     private RaycastHit raycastHit;
     public static List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
-    public int maxSelections = 3;
+    private int maxSelections;
     public float maxSelectionRange;
     public AudioSource selectSound;
     public AudioSource openSound;
@@ -27,7 +27,8 @@ public class OutlineSelection : MonoBehaviour
     void Start()
     {
         player = Camera.main.transform;
-        maxSelectionRange = maxSelections;
+        maxSelectionRange = 3;
+        SetMaxSelections(Hud.AnomalyCount[Hud.GetCurrent()]);
     }
 
     void Update()
