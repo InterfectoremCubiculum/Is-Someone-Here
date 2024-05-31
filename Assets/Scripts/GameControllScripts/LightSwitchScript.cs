@@ -9,6 +9,7 @@ public class LightSwitchScript : MonoBehaviour
     private RaycastHit raycastHit;
     public float maxSelectionRange;
     public GameObject lightObjectGameParent; // Public variable for the name of the light object
+    public AudioSource clickSound;
 
     void Start()
     {
@@ -33,31 +34,11 @@ public class LightSwitchScript : MonoBehaviour
                 if (Input.GetKeyDown("e"))
                 {
                     Debug.Log($"Wcisniêto");
+                    clickSound.Play();
                     foreach (Transform light in lightObjectGameParent.GetComponent<Transform>())
                     {
                         Debug.Log($"zapalono {light.name}");
                         light.gameObject.GetComponent<Light>().enabled = !light.gameObject.GetComponent<Light>().enabled;
-                    }
-                    try
-                    {
-                        
-
-                        /*GameObject[] lightObjects = GameObject.FindGameObjectsWithTag(lightObjectName);
-                        if (lightObjects != null)
-                        {
-                            foreach (GameObject lightObject in lightObjects)
-                            {
-                                Light light = lightObject.GetComponent<Light>();
-                                if (light != null)
-                                {
-                                    light.enabled = !light.enabled;
-                                }
-                            }
-                        }*/
-                    }
-                    catch
-                    {
-
                     }
                     
                 }
@@ -69,16 +50,12 @@ public class LightSwitchScript : MonoBehaviour
     {
         foreach (Transform light in lightObjectGameParent.GetComponent<Transform>())
         {
-            light.gameObject.GetComponent<Light>().enabled = false;
-        }
-        /*GameObject lightObject = GameObject.Find(lightObjectName);
-        if (lightObject != null)
-        {
-            Light light = lightObject.GetComponent<Light>();
-            if (light != null)
+            Debug.Log($"zapalono {light.name}");
+            if (light.gameObject.GetComponent<Light>().enabled == true)
             {
-                light.enabled = false;
+                clickSound.Play();
+                light.gameObject.GetComponent<Light>().enabled = false;
             }
-        }*/
+        }
     }
 }
