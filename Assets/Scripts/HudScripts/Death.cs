@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
-    public string currentLevel = "HomeLozko";
-    public int levelTime = 20;
+    public string currentLevel;
+    public int levelTime;
 
+   void Start()
+    {
+        currentLevel = Hud.Levels[Hud.GetCurrent()];
+        levelTime = Hud.LevelsTimes[Hud.GetCurrent()];
+    }
     // Update is called once per frame
     void Update()
     {

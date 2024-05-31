@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class BedScript : MonoBehaviour
@@ -20,7 +21,17 @@ public class BedScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && nearBed == true)
         {
             //spradzam czy nie gine potem spanie
-            SceneManager.LoadScene("Sleeping");
+            int next = Hud.GetCurrent() + 1;
+
+            if (next == Hud.Levels.Count)
+            {
+                SceneManager.LoadScene("Winner");
+            }
+            else
+            {
+                Hud.SetCurrent(next);
+                SceneManager.LoadScene("Sleeping");
+            }
         }
     }
 
