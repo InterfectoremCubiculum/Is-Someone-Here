@@ -9,7 +9,9 @@ public class Timer : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI timerText;
     public GameObject warningText;
-    
+    private Animator animDead;
+    private bool sleeped = false;
+
     static public float leftTime;
     static public bool finish;
     static private bool isSet = false;
@@ -20,6 +22,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animDead = GameObject.Find("Player").GetComponent<Animator>();
         warningText.SetActive(false);
         finish = false;
     }
@@ -34,7 +37,16 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isSet == false)
+        if (sleeped)
+        {
+            if (!(animDead.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
+            {
+                SceneManager.LoadScene("Death");
+                return;
+            }
+        }
+
+        if (isSet == false)
         {
             timerText.text = "Rozejrzyj siê";
         }
@@ -63,8 +75,10 @@ public class Timer : MonoBehaviour
             {
                 finish = true;
                 timerText.text = "Smieræ";
-                SceneManager.LoadScene("Death");
-            }
+                animDead.enabled = true;
+                animDead.SetBool("dying", true);
+                sleeped = true;
+                }
         }
     }
 }
