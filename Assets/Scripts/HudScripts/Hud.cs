@@ -27,8 +27,16 @@ public class Hud : MonoBehaviour
         if(CurrentLevelText != null)
         {
             TextMeshProUGUI textInside = CurrentLevelText.GetComponent<TextMeshProUGUI>();
-            textInside.text = "Poziom: " + Levels[current];
-        }        
+            if (current == 0)
+            {
+                textInside.text = "";
+            }
+            else
+            {
+                textInside.text = "Poziom: " + Levels[current];
+            }
+        }
+
     }
     public static int GetCurrent()
     {
@@ -38,7 +46,15 @@ public class Hud : MonoBehaviour
     {
         marks = m;
         TextMeshProUGUI textInside = MarksText.GetComponent<TextMeshProUGUI>();
-        textInside.text = "Oznaczenia: "+marks;
+        if (current == 0)
+        {
+            textInside.text = "";
+        }
+        else
+        {
+            textInside.text = "Oznaczenia: " + marks;
+        }
+
         if(marks == 0)
         {
             textInside.color = Color.red;
