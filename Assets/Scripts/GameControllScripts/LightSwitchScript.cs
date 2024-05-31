@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class LightSwitchScript : MonoBehaviour
@@ -15,18 +14,17 @@ public class LightSwitchScript : MonoBehaviour
 
     void Update()
     {
-        // Check for mouse click
-        if (Input.GetMouseButtonDown(0)) // 0 is for left mouse button, you can change to other buttons if needed
+        // Check for "E" key press or simulated middle click
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(2))
         {
+            // Simulate a raycast from the middle of the screen
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.CompareTag("Switch"))
-                {
-                    Debug.Log("Clicked a switch");
-                    // Add any additional logic you want to execute when the switch is clicked
-                }
+                Debug.Log("Clicked object: " + hit.transform.name + ", Tag: " + hit.transform.tag);
+
+                // Add any additional logic you want to execute when the switch is clicked
             }
         }
     }

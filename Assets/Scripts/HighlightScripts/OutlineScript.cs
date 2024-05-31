@@ -8,10 +8,10 @@ public class OutlineSelection : MonoBehaviour
     private Transform player;
     private Transform highlight;
     private RaycastHit raycastHit;
-    private List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
+    public static List<Transform> selections = new List<Transform>(); // lista wybranych rzeczy
     private int maxSelections = 3;
     public float maxSelectionRange;
-    public List<Transform> GetSelections() { return selections; }
+    public static List<Transform> GetSelections() { return selections; }
     public void SetMaxSelections(int maxSelections)
     {
         this.maxSelections = maxSelections;

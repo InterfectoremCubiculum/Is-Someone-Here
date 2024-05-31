@@ -20,17 +20,40 @@ public class BedScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && nearBed == true)
         {
-            //spradzam czy nie gine potem spanie
-            int next = Hud.GetCurrent() + 1;
+            if (Hud.GetMarks() != 0)
+            {
+                Debug.Log("nie oznaczy³eœ anomali");
+                SceneManager.LoadScene("Death");
+                return;
+            }
+            else
+            {
+                List<Transform> lista = OutlineSelection.GetSelections();
+                foreach (Transform s in lista)
+                {
+                    ObjectInfo obj = s.gameObject.GetComponent<ObjectInfo>();
+                    if (obj.isAnomaly != true)
+                    {
+                        Debug.Log("nie znalaz³eœ wszystkich anomali");
+                        SceneManager.LoadScene("Death");
+                        return;
+                    }
+                }
+            }
 
+            int next = Hud.GetCurrent() + 1;
             if (next == Hud.Levels.Count)
             {
+                Debug.Log("to by³ ostatni poziom");
                 SceneManager.LoadScene("Winner");
+                return;
             }
             else
             {
                 Hud.SetCurrent(next);
+                Debug.Log("znalaz³eœ wszystkie anomalie");
                 SceneManager.LoadScene("Sleeping");
+                return;
             }
         }
     }
